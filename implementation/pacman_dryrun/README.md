@@ -13,7 +13,7 @@ Showcase of the Claude Code workflow: brief → PRD → backlog continuity → i
 ## Run
 
 ```bash
-cd implementation/ai_game_pacman_dryrun
+cd implementation/pacman_dryrun
 uv sync --project .
 uv run --project . python -m ai_pacman.game
 ```
@@ -21,14 +21,14 @@ uv run --project . python -m ai_pacman.game
 ## CLI
 
 ```bash
-cd implementation/ai_game_pacman_dryrun
+cd implementation/pacman_dryrun
 uv run --project . python -m ai_pacman.game
 ```
 
 ## Test
 
 ```bash
-cd implementation/ai_game_pacman_dryrun
+cd implementation/pacman_dryrun
 uv run --project . python -m pytest -q
 ```
 

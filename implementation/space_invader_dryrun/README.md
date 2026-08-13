@@ -13,7 +13,7 @@ Showcase of the Claude Code workflow: brief -> PRD -> backlog continuity -> impl
 ## Run
 
 ```bash
-cd implementation/ai_game_space_invader_dryrun
+cd implementation/space_invader_dryrun
 uv sync --project .
 uv run --project . python -m ai_space_invader.game
 ```
@@ -21,14 +21,14 @@ uv run --project . python -m ai_space_invader.game
 ## CLI
 
 ```bash
-cd implementation/ai_game_space_invader_dryrun
+cd implementation/space_invader_dryrun
 uv run --project . python -m ai_space_invader.game
 ```
 
 ## Test
 
 ```bash
-cd implementation/ai_game_space_invader_dryrun
+cd implementation/space_invader_dryrun
 uv run --project . python -m pytest -q
 ```
 

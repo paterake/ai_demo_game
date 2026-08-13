@@ -142,7 +142,7 @@ The PCO governance rules shape every decision in this workflow:
 
 **At the start of every session:**
 ```
-load the use-context skill, and from: implementation/ai_game_pacman_demo/docs/TODO.md, continue
+load the use-context skill, and from: implementation/pacman_demo/docs/TODO.md, continue
 ```
 
 The session reads the anchor doc, finds the next ⏳ item, reads the `Accumulated Active

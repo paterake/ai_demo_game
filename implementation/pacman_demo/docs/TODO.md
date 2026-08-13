@@ -1,15 +1,15 @@
-> **Anchor document** — ai_game_pacman_demo: PRD drafted (v0.1), not yet strengthened. Extension backlog seeded (Items 10–16).
+> **Anchor document** — pacman_demo: PRD drafted (v0.1), not yet strengthened. Extension backlog seeded (Items 10–16).
 > Next: **Item 1** — research + pre-implementation gate. Parts A and B both required before any code.
 > Read `PRD.md` before starting Item 1.
 
 ## Resume (start here)
 
-- From `implementation/ai_game_pacman_demo/docs/TODO.md`: Continue **Item 1** — Part A (research, refine extension items) then Part B (resolve all [TBD] items in PRD.md)
+- From `implementation/pacman_demo/docs/TODO.md`: Continue **Item 1** — Part A (research, refine extension items) then Part B (resolve all [TBD] items in PRD.md)
 
 ## Session start prompt
 
 ```
-load the use-context skill, and from: implementation/ai_game_pacman_demo/docs/TODO.md, continue
+load the use-context skill, and from: implementation/pacman_demo/docs/TODO.md, continue
 ```
 
 ## Workshop prompt (bounded research → PRD → start build)
@@ -19,7 +19,7 @@ Use this when a breakout team wants the agent to do the research and PRD strengt
 ```
 Load the use-context skill.
 
-From implementation/ai_game_pacman_demo/docs/TODO.md, complete Item 1 with these constraints:
+From implementation/pacman_demo/docs/TODO.md, complete Item 1 with these constraints:
 - Timebox web research to 10 minutes and at most 5 sources.
 - Every behaviour-changing claim must include a source URL; otherwise mark it as a design choice.
 - Convert research into explicit decisions in PRD.md (no open questions remain).

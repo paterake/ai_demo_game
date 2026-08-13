@@ -9,19 +9,19 @@ development. Two complete, modular, config-driven games:
 | **Space Invaders Dry Run** | Modular, config-driven Space Invaders with bunker/UFO/attract mode | `implementation/space_invader_dryrun/` |
 | **Pac-Man Demo** | Design notes and product narrative for the workshop | `implementation/pacman_demo/` |
 
-## Why this is a separate repo
+## Why this is a standalone repo
 
 These demos were originally built as a quick, fun workshop exercise to
 showcase how coding agents iterate on a game loop. They have **no runtime,
-governance, or code overlap** with the `ai_platform` repo (which is a
-serious, governed context-engineering and inference platform). Keeping them
-in `ai_platform` caused cross-repo noise: pytest collection failures,
-PRD-drift false positives, and a product-mix that blurred the boundary
-between a governed inference platform and a workshop demo sandbox.
+governance, or code overlap** with the governed context-engineering and
+inference platform. Keeping them isolated avoids cross-repo noise: pytest
+collection failures, PRD-drift false positives, and a product-mix that
+blurred the boundary between a governed inference platform and a workshop
+demo sandbox.
 
 Split rule: anything that depends on `ai-agent-core` or the governed
-context-assembly / trust-gate / eval substrate lives in `ai_platform`;
-anything that is pure Pygame + workshop narrative lives here.
+context-assembly / trust-gate / eval substrate lives in the governed
+platform repo; anything that is pure Pygame + workshop narrative lives here.
 
 ## Quick start
 

@@ -1,15 +1,15 @@
-> **Anchor document** — ai_game_pacman_dryrun: core + immersion features implemented and verified (Items 0–14 ✅, Item 16 ✅). Extension backlog remains (Items 15, 17 ⏳).
+> **Anchor document** — pacman_dryrun: core + immersion features implemented and verified (Items 0–14 ✅, Item 16 ✅). Extension backlog remains (Items 15, 17 ⏳).
 > Next: **Item 15** — high score persistence.
 > Before touching code: read **Accumulated Active Constraints**.
 
 ## Resume (start here)
 
-- From `implementation/ai_game_pacman_dryrun/docs/TODO.md`: Continue **Item 15** — high score persistence
+- From `implementation/pacman_dryrun/docs/TODO.md`: Continue **Item 15** — high score persistence
 
 ## Session start prompt
 
 ```
-load the use-context skill, and from: implementation/ai_game_pacman_dryrun/docs/TODO.md, continue
+load the use-context skill, and from: implementation/pacman_dryrun/docs/TODO.md, continue
 ```
 
 ---
@@ -17,8 +17,8 @@ load the use-context skill, and from: implementation/ai_game_pacman_dryrun/docs/
 ## Accumulated Active Constraints
 
 - Maze encoding is authoritative in [maze.yaml](../config/maze.yaml): do not hardcode legend tokens in source.
-- Only [renderer.py](file:///Users/rpatel/Documents/__code/git/emailrak/ai_platform/implementation/ai_game_pacman_dryrun/src/ai_pacman/renderer.py) may call `pygame.draw`; entity modules must not import pygame.
-- Only [audio.py](file:///Users/rpatel/Documents/__code/git/emailrak/ai_platform/implementation/ai_game_pacman_dryrun/src/ai_pacman/audio.py) may call `pygame.mixer`.
+- Only [renderer.py](../src/ai_pacman/renderer.py) may call `pygame.draw`; entity modules must not import pygame.
+- Only [audio.py](../src/ai_pacman/audio.py) may call `pygame.mixer`.
 - Gameplay tuning values (FPS, lives, speeds, scores, colours) live in YAML under `config/` — no domain constants in source.
 - Module verification runs inside the module directory: `uv run --project . python -m pytest -q`.
 
@@ -41,7 +41,7 @@ load the use-context skill, and from: implementation/ai_game_pacman_dryrun/docs/
 - All tuneable values (colours, timing, lives, window size, maze layout) belong in YAML config, not source.
 
 Checkpoint (completed)
-- Done: PRD + anchor doc created and copied to `ai_game_pacman_dryrun`
+- Done: PRD + anchor doc created and copied to `pacman_dryrun`
 - Verification: N/A (docs-only)
 - Gotchas: none
 
@@ -88,12 +88,12 @@ is wired; difficulty shapes what goes in config).
 13. Update this anchor doc: move Item 1 to ✅, set Item 2 as next, update Resume line
 
 Checkpoint (completed)
-- Done: [PRD.md](file:///Users/rpatel/Documents/__code/git/emailrak/ai_platform/implementation/ai_game_pacman_dryrun/PRD.md) strengthened (TBDs resolved; status 🟢 Ready); [RESEARCH.md](file:///Users/rpatel/Documents/__code/git/emailrak/ai_platform/implementation/ai_game_pacman_dryrun/docs/RESEARCH.md) added; default maze committed to [maze.yaml](file:///Users/rpatel/Documents/__code/git/emailrak/ai_platform/implementation/ai_game_pacman_dryrun/config/maze.yaml)
+- Done: [PRD.md](../PRD.md) strengthened (TBDs resolved; status 🟢 Ready); [RESEARCH.md](RESEARCH.md) added; default maze committed to [maze.yaml](../config/maze.yaml)
 - Constraints / ground rules (active for all remaining items):
   - Maze legend + grid live in YAML and are the authoritative encoding contract.
   - Core scope is single-level; multi-level progression remains extension scope.
-- Verification: `grep -n \"\\[TBD\\]\" PRD.md` (must return no matches)
-- Gotchas: anchor doc originally referenced `ai_game_pacman_demo` paths; updated to `ai_game_pacman_dryrun`
+- Verification: `grep -n "\[TBD\]" PRD.md` (must return no matches)
+- Gotchas: anchor doc originally referenced `pacman_demo` paths; updated to `pacman_dryrun`
 
 ---
 
@@ -110,7 +110,7 @@ Create the directory skeleton and empty config files. No source logic yet.
 6. Confirm `uv run python -m ai_pacman.game` is the entry point
 
 Checkpoint (completed)
-- Done: module scaffold created: [pyproject.toml](file:///Users/rpatel/Documents/__code/git/emailrak/ai_platform/implementation/ai_game_pacman_dryrun/pyproject.toml), `src/ai_pacman/`, `config/` stubs, `tests/`
+- Done: module scaffold created: [pyproject.toml](../pyproject.toml), `src/ai_pacman/`, `config/` stubs, `tests/`
 - Verification: `uv sync --project .` (creates `.venv` and installs deps)
 - Gotchas: running `pytest` from repo root collects other modules; run from this module directory
 
@@ -121,7 +121,7 @@ Checkpoint (completed)
 Implement `maze.py`: load grid from `config/maze.yaml`, expose wall collision queries, pellet map.
 
 Checkpoint (completed)
-- Done: [maze.py](file:///Users/rpatel/Documents/__code/git/emailrak/ai_platform/implementation/ai_game_pacman_dryrun/src/ai_pacman/maze.py) implemented + tests
+- Done: [maze.py](../src/ai_pacman/maze.py) implemented + tests
 - Constraints / ground rules (active for all remaining items):
   - Maze is immutable; `eat_pellet()` returns a new Maze to keep state updates explicit.
 - Verification: `uv run --project . python -m pytest -q tests/test_maze.py`
@@ -135,7 +135,7 @@ Implement `pacman.py`: position, queued direction, movement per tick, wall colli
 chomping animation state.
 
 Checkpoint (completed)
-- Done: [pacman.py](file:///Users/rpatel/Documents/__code/git/emailrak/ai_platform/implementation/ai_game_pacman_dryrun/src/ai_pacman/pacman.py) implemented + tests
+- Done: [pacman.py](../src/ai_pacman/pacman.py) implemented + tests
 - Constraints / ground rules (active for all remaining items):
   - Pac-Man movement is grid-step (tile-based) with an accumulator; dt spikes can create multi-tile steps.
 - Verification: `uv run --project . python -m pytest -q tests/test_pacman.py`
@@ -149,7 +149,7 @@ Implement `ghost.py`: position, AI mode (normal / frightened / eaten), movement 
 turns at intersections, frightened mode timer sourced from `config/game.yaml`.
 
 Checkpoint (completed)
-- Done: [ghost.py](file:///Users/rpatel/Documents/__code/git/emailrak/ai_platform/implementation/ai_game_pacman_dryrun/src/ai_pacman/ghost.py) implemented + tests
+- Done: [ghost.py](../src/ai_pacman/ghost.py) implemented + tests
 - Constraints / ground rules (active for all remaining items):
   - Frightened start reverses ghost direction; frightened movement is random-walk at intersections.
 - Verification: `uv run --project . python -m pytest -q tests/test_ghost.py`
@@ -163,7 +163,7 @@ Implement `renderer.py`: all `pygame.draw` calls, reads colours exclusively from
 No entity class imports pygame directly.
 
 Checkpoint (completed)
-- Done: [renderer.py](file:///Users/rpatel/Documents/__code/git/emailrak/ai_platform/implementation/ai_game_pacman_dryrun/src/ai_pacman/renderer.py) implemented (all `pygame.draw` calls here)
+- Done: [renderer.py](../src/ai_pacman/renderer.py) implemented (all `pygame.draw` calls here)
 - Constraints / ground rules (active for all remaining items):
   - Renderer reads only values passed from config; entities remain pygame-free.
 - Verification: manual (run game; change `config/visuals.yaml` colours and observe)
@@ -177,7 +177,7 @@ Implement `state.py` (GameState dataclass) and `game.py` (main loop: event handl
 collision detection, render, FPS cap from config).
 
 Checkpoint (completed)
-- Done: [state.py](file:///Users/rpatel/Documents/__code/git/emailrak/ai_platform/implementation/ai_game_pacman_dryrun/src/ai_pacman/state.py) + [game.py](file:///Users/rpatel/Documents/__code/git/emailrak/ai_platform/implementation/ai_game_pacman_dryrun/src/ai_pacman/game.py) implemented
+- Done: [state.py](../src/ai_pacman/state.py) + [game.py](../src/ai_pacman/game.py) implemented
 - Verification: `uv run --project . python -c \"from ai_pacman.game import main; print('import ok')\"`
 - Gotchas: interactive run requires quitting the Pygame window (Esc) to return control
 
@@ -188,7 +188,7 @@ Checkpoint (completed)
 Implement `ui.py`: HUD (score + lives), Game Over overlay, Victory overlay.
 
 Checkpoint (completed)
-- Done: [ui.py](file:///Users/rpatel/Documents/__code/git/emailrak/ai_platform/implementation/ai_game_pacman_dryrun/src/ai_pacman/ui.py) implemented (HUD + overlays)
+- Done: [ui.py](../src/ai_pacman/ui.py) implemented (HUD + overlays)
 - Verification: manual (play to game-over/victory)
 - Gotchas: none
 
