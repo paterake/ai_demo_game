@@ -1,0 +1,18 @@
+colours:
+  background: "#050816"
+  hud_text: "#E8F1FF"
+  player: "#7CFF7C"
+  player_cockpit: "#D8F8E1"
+  invader_top: "#F8F8F2"
+  invader_mid: "#8BE9FD"
+  invader_bottom: "#FFB86C"
+  ufo: "#FF6B6B"
+  bunker: "#55FF88"
+  projectile_player: "#F8F871"
+  projectile_enemy: "#FF7A7A"
+  invade_line: "#5C6370"
+  star: "#6C89FF"
+
+stars:
+  seed: 7
+  count: 64

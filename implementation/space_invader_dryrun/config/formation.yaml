@@ -1,0 +1,38 @@
+fleet:
+  rows: 5
+  cols: 11
+  start_x_px: 118
+  start_y_px: 140
+  h_spacing_px: 18
+  v_spacing_px: 18
+  alien_width_px: 30
+  alien_height_px: 22
+  step_px: 14
+  step_down_px: 20
+  base_interval_s: 0.75
+  min_interval_s: 0.09
+  row_types:
+    - kind: squid
+      score: 30
+    - kind: crab
+      score: 20
+    - kind: crab
+      score: 20
+    - kind: octopus
+      score: 10
+    - kind: octopus
+      score: 10
+
+bunkers:
+  top_y_px: 540
+  cell_size_px: 8
+  origins_x_px:
+    - 126
+    - 286
+    - 446
+    - 606
+  pattern:
+    - "  ####  "
+    - " ###### "
+    - "########"
+    - "###  ###"

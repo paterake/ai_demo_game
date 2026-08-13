@@ -1,0 +1,25 @@
+[project]
+name = "ai-demo-game"
+version = "0.1.0"
+description = "Fun, interactive Pygame demos built to showcase coding-agent workflows — Pac-Man and Space Invaders workshop modules."
+requires-python = ">=3.11, <3.14"
+readme = "README.md"
+
+[tool.uv.workspace]
+members = [
+    "implementation/pacman_dryrun",
+    "implementation/space_invader_dryrun",
+]
+
+[tool.uv.sources]
+ai-pacman-dryrun = { workspace = true }
+ai-space-invader-dryrun = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

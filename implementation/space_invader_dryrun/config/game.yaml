@@ -1,0 +1,74 @@
+window:
+  width_px: 800
+  height_px: 720
+
+timing:
+  fps: 60
+  start_countdown_s: 2.0
+  respawn_countdown_s: 1.6
+  wave_clear_delay_s: 1.8
+
+rules:
+  starting_lives: 3
+  extra_life_score: 1500
+  max_level: 6
+
+player:
+  width_px: 36
+  height_px: 20
+  speed_px_per_s: 320
+  shot_cooldown_s: 0.35
+
+projectiles:
+  player_speed_px_per_s: -520
+  enemy_speed_px_per_s: 260
+  width_px: 4
+  height_px: 14
+
+ufo:
+  enabled: true
+  spawn_interval_s: 20.0
+  respawn_delay_s: 8.0
+  speed_px_per_s: 140
+  width_px: 46
+  height_px: 20
+  y_px: 84
+  score_cycle:
+    - 50
+    - 50
+    - 100
+    - 150
+    - 100
+    - 100
+    - 50
+    - 300
+    - 100
+    - 100
+    - 100
+    - 50
+    - 150
+    - 100
+    - 100
+
+progression:
+  formation_interval_decay_per_level: 0.08
+  min_formation_interval_multiplier: 0.55
+  enemy_fire_interval_decay_per_level: 0.06
+
+attract_mode:
+  enabled: true
+  idle_timeout_s: 8.0
+  restart_delay_s: 2.2
+  fire_tolerance_px: 10
+
+high_scores:
+  file: .ignore/high_scores.json
+  max_entries: 5
+  default_name: PLAYER
+
+ui:
+  hud_height_px: 48
+  arena_top_px: 64
+  arena_bottom_margin_px: 52
+  invade_line_margin_px: 90
+  font_size_px: 22

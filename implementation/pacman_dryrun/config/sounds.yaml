@@ -1,0 +1,11 @@
+enabled: true
+
+events:
+  pellet_eat: "synth:pellet"
+  power_pellet: "synth:power"
+  ghost_eat: "synth:ghost"
+  fruit_eat: "synth:fruit"
+  pacman_death: "synth:death"
+  game_over: "synth:lose"
+  victory: "synth:win"
+  theme_music: "synth:theme_v1"

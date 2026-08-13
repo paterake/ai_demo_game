@@ -1,0 +1,13 @@
+profiles:
+  easy:
+    ghost_speed_multiplier: 0.85
+    pacman_speed_multiplier: 1.05
+    frightened_duration_multiplier: 1.2
+  normal:
+    ghost_speed_multiplier: 1.0
+    pacman_speed_multiplier: 1.0
+    frightened_duration_multiplier: 1.0
+  hard:
+    ghost_speed_multiplier: 1.15
+    pacman_speed_multiplier: 0.95
+    frightened_duration_multiplier: 0.8

@@ -1,0 +1,65 @@
+window:
+  width_px: 600
+  height_px: 600
+
+timing:
+  fps: 60
+  frightened_duration_s: 7.0
+
+rules:
+  starting_lives: 3
+  pellet_score: 10
+  power_pellet_score: 50
+  ghost_eat_score: 200
+
+fruit:
+  ttl_min_s: 9.0
+  ttl_max_s: 10.0
+  spawn_pellets_eaten:
+    - 70
+    - 170
+  spawn_positions:
+    - row: 17
+      col: 13
+  table:
+    - min_level: 1
+      max_level: 1
+      name: "cherry"
+      score: 100
+    - min_level: 2
+      max_level: 2
+      name: "strawberry"
+      score: 300
+    - min_level: 3
+      max_level: 4
+      name: "orange"
+      score: 500
+    - min_level: 5
+      max_level: 6
+      name: "apple"
+      score: 700
+    - min_level: 7
+      max_level: 8
+      name: "pineapple"
+      score: 1000
+    - min_level: 9
+      max_level: 10
+      name: "galaxian"
+      score: 2000
+    - min_level: 11
+      max_level: 12
+      name: "bell"
+      score: 3000
+    - min_level: 13
+      max_level: 999
+      name: "key"
+      score: 5000
+
+movement:
+  pacman_speed_tiles_per_s: 8.0
+  ghost_speed_tiles_per_s: 7.0
+  ghost_frightened_speed_multiplier: 0.6
+
+ui:
+  hud_height_px: 48
+  font_size_px: 20

@@ -1,0 +1,12 @@
+enabled: true
+
+events:
+  player_shoot: "synth:shoot"
+  alien_hit: "synth:alien_hit"
+  enemy_shoot: "synth:enemy_shoot"
+  bunker_hit: "synth:bunker_hit"
+  ufo_hit: "synth:ufo_hit"
+  player_hit: "synth:player_hit"
+  wave_clear: "synth:wave_clear"
+  game_over: "synth:game_over"
+  theme_music: "synth:space_pulse"

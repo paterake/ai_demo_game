@@ -1,0 +1,42 @@
+colours:
+  background: "#000000"
+  walls: "#0000FF"
+  hud_text: "#FFFFFF"
+
+  pellets: "#FFFF00"
+  power_pellets: "#FFFF00"
+
+  pacman: "#FFFF00"
+
+  fruit: "#FF2D55"
+  fruit_palette:
+    cherry: "#FF0033"
+    strawberry: "#FF3355"
+    orange: "#FFA500"
+    apple: "#FF2D2D"
+    pineapple: "#FFD400"
+    galaxian: "#00E5FF"
+    bell: "#FFD700"
+    key: "#FFE066"
+  fruit_stem: "#2ECC71"
+  fruit_leaf: "#2ECC71"
+
+  frightened_ghost: "#1E90FF"
+
+  ghosts:
+    blinky: "#FF0000"
+    pinky: "#FFC0CB"
+    inky: "#00FFFF"
+    clyde: "#FFA500"
+
+sizes:
+  wall_thickness_px: 2
+  pellet_radius_px: 3
+  power_pellet_radius_px: 7
+  fruit_radius_px: 7
+  pacman_radius_px: 10
+  ghost_radius_px: 10
+
+animation:
+  pacman_mouth_open_degrees: 50
+  pacman_mouth_speed_hz: 6.0

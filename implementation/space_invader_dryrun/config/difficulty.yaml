@@ -1,0 +1,19 @@
+profiles:
+  easy:
+    formation_interval_multiplier: 1.12
+    player_speed_multiplier: 1.05
+    enemy_fire_interval_s: 1.25
+    enemy_shot_speed_multiplier: 0.90
+    max_enemy_projectiles: 2
+  normal:
+    formation_interval_multiplier: 1.00
+    player_speed_multiplier: 1.00
+    enemy_fire_interval_s: 0.95
+    enemy_shot_speed_multiplier: 1.00
+    max_enemy_projectiles: 3
+  hard:
+    formation_interval_multiplier: 0.90
+    player_speed_multiplier: 0.96
+    enemy_fire_interval_s: 0.78
+    enemy_shot_speed_multiplier: 1.14
+    max_enemy_projectiles: 3
