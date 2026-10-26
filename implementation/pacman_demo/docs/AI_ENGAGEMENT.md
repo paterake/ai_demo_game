@@ -35,7 +35,7 @@ Step 1 — Create draft PRD
     │   Name what is still unknown ([TBD] items).
     │
     ▼
-Step 2 — Create backlog continuity anchor doc (TODO.md)
+Step 2 — Create backlog continuity anchor doc (docs/todo/pacman_demo.md)
     │   Seed implementation items from the PRD.
     │   Seed extension items from the brief and known patterns.
     │   Item 1 is always the pre-implementation gate — never skip it.
@@ -96,7 +96,7 @@ Claude Code sessions are stateless. A fresh session has no memory of decisions m
 prior sessions. Without a structured handoff, each session re-derives the same constraints
 from scratch — or worse, contradicts them.
 
-The anchor doc (`docs/TODO.md`) is the single source of truth across sessions:
+The anchor doc (`docs/todo/pacman_demo.md`) is the single source of truth across sessions:
 - The resume line tells a fresh session exactly where to start.
 - The `Accumulated Active Constraints` section carries invariants established by completed
   items forward — so a session that implements the ghost AI knows the maze module's
@@ -142,7 +142,7 @@ The PCO governance rules shape every decision in this workflow:
 
 **At the start of every session:**
 ```
-load the use-context skill, and from: implementation/pacman_demo/docs/TODO.md, continue
+load the use-context skill, and from: docs/todo/pacman_demo.md, continue
 ```
 
 The session reads the anchor doc, finds the next ⏳ item, reads the `Accumulated Active

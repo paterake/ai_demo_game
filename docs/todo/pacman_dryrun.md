@@ -4,21 +4,21 @@
 
 ## Resume (start here)
 
-- From `implementation/pacman_dryrun/docs/TODO.md`: Continue **Item 15** — high score persistence
+- From `docs/todo/pacman_dryrun.md`: Continue **Item 15** — high score persistence
 
 ## Session start prompt
 
 ```
-load the use-context skill, and from: implementation/pacman_dryrun/docs/TODO.md, continue
+load the use-context skill, and from: docs/todo/pacman_dryrun.md, continue
 ```
 
 ---
 
 ## Accumulated Active Constraints
 
-- Maze encoding is authoritative in [maze.yaml](../config/maze.yaml): do not hardcode legend tokens in source.
-- Only [renderer.py](../src/ai_pacman/renderer.py) may call `pygame.draw`; entity modules must not import pygame.
-- Only [audio.py](../src/ai_pacman/audio.py) may call `pygame.mixer`.
+- Maze encoding is authoritative in [maze.yaml](../../implementation/pacman_dryrun/config/maze.yaml): do not hardcode legend tokens in source.
+- Only [renderer.py](../../implementation/pacman_dryrun/src/ai_pacman/renderer.py) may call `pygame.draw`; entity modules must not import pygame.
+- Only [audio.py](../../implementation/pacman_dryrun/src/ai_pacman/audio.py) may call `pygame.mixer`.
 - Gameplay tuning values (FPS, lives, speeds, scores, colours) live in YAML under `config/` — no domain constants in source.
 - Module verification runs inside the module directory: `uv run --project . python -m pytest -q`.
 
@@ -26,14 +26,14 @@ load the use-context skill, and from: implementation/pacman_dryrun/docs/TODO.md,
 
 ## Items
 
-### ✅ Item 0 — Create draft PRD from brief
+### ✅ Item 0 — pacman_dryrun: Create draft PRD from brief
 
 **Brief:** slide 26 Pac-Man workshop prompt.
 
 **Done:**
-- `PRD.md` created — requirements translated from prompt, single-file approach explicitly rejected,
+- `implementation/pacman_dryrun/PRD.md` created — requirements translated from prompt, single-file approach explicitly rejected,
   architecture constraints applied, [TBD] items named, proposed module structure documented.
-- `docs/TODO.md` (this file) created as the backlog anchor doc.
+- `docs/todo/pacman_dryrun.md` (this file) created as the backlog anchor doc.
 - `README.md` created.
 
 **Constraints established:**
@@ -47,11 +47,11 @@ Checkpoint (completed)
 
 ---
 
-### ✅ Item 1 — Pre-implementation gate: research, extend backlog, strengthen PRD
+### ✅ Item 1 — pacman_dryrun: Pre-implementation gate: research, extend backlog, strengthen PRD
 
 Two parts: (A) internet research to discover what a well-featured Pac-Man clone looks like
 beyond the brief, then use findings to populate the extension backlog items (Items 10–16);
-(B) resolve all [TBD] items in `PRD.md` so implementation can begin.
+(B) resolve all [TBD] items in `implementation/pacman_dryrun/PRD.md` so implementation can begin.
 
 Neither part is optional — extension items must be framed before core implementation
 starts so the architecture accommodates them (e.g. the sound system shapes how `game.py`
@@ -68,7 +68,7 @@ is wired; difficulty shapes what goes in config).
    - Confirm or adjust scope, behaviour, and config keys for each item
    - Add any extension items the research surfaces that are not already listed
    - Remove any seeded item that research shows is out of scope or unworkable
-3. Add `config/sounds.yaml` to the proposed module structure in `PRD.md` (maps sound event
+3. Add `config/sounds.yaml` to the proposed module structure in `implementation/pacman_dryrun/PRD.md` (maps sound event
    names to file paths — all sound wiring is config, no hardcoded paths in source)
 4. Add `config/difficulty.yaml` to the proposed module structure (maps difficulty level names
    to numeric parameters — speed multipliers, frightened duration, ghost count, etc.)
@@ -88,7 +88,7 @@ is wired; difficulty shapes what goes in config).
 13. Update this anchor doc: move Item 1 to ✅, set Item 2 as next, update Resume line
 
 Checkpoint (completed)
-- Done: [PRD.md](../PRD.md) strengthened (TBDs resolved; status 🟢 Ready); [RESEARCH.md](RESEARCH.md) added; default maze committed to [maze.yaml](../config/maze.yaml)
+- Done: [PRD.md](../../implementation/pacman_dryrun/PRD.md) strengthened (TBDs resolved; status 🟢 Ready); [RESEARCH.md](../../implementation/pacman_dryrun/docs/RESEARCH.md) added; default maze committed to [maze.yaml](../../implementation/pacman_dryrun/config/maze.yaml)
 - Constraints / ground rules (active for all remaining items):
   - Maze legend + grid live in YAML and are the authoritative encoding contract.
   - Core scope is single-level; multi-level progression remains extension scope.
@@ -97,7 +97,7 @@ Checkpoint (completed)
 
 ---
 
-### ✅ Item 2 — Scaffold: structure, pyproject.toml, config stubs
+### ✅ Item 2 — pacman_dryrun: Scaffold: structure, pyproject.toml, config stubs
 
 Create the directory skeleton and empty config files. No source logic yet.
 
@@ -110,18 +110,18 @@ Create the directory skeleton and empty config files. No source logic yet.
 6. Confirm `uv run python -m ai_pacman.game` is the entry point
 
 Checkpoint (completed)
-- Done: module scaffold created: [pyproject.toml](../pyproject.toml), `src/ai_pacman/`, `config/` stubs, `tests/`
+- Done: module scaffold created: [pyproject.toml](../../implementation/pacman_dryrun/pyproject.toml), `src/ai_pacman/`, `config/` stubs, `tests/`
 - Verification: `uv sync --project .` (creates `.venv` and installs deps)
 - Gotchas: running `pytest` from repo root collects other modules; run from this module directory
 
 ---
 
-### ✅ Item 3 — Maze module
+### ✅ Item 3 — pacman_dryrun: Maze module
 
 Implement `maze.py`: load grid from `config/maze.yaml`, expose wall collision queries, pellet map.
 
 Checkpoint (completed)
-- Done: [maze.py](../src/ai_pacman/maze.py) implemented + tests
+- Done: [maze.py](../../implementation/pacman_dryrun/src/ai_pacman/maze.py) implemented + tests
 - Constraints / ground rules (active for all remaining items):
   - Maze is immutable; `eat_pellet()` returns a new Maze to keep state updates explicit.
 - Verification: `uv run --project . python -m pytest -q tests/test_maze.py`
@@ -129,13 +129,13 @@ Checkpoint (completed)
 
 ---
 
-### ✅ Item 4 — Pac-Man entity
+### ✅ Item 4 — pacman_dryrun: Pac-Man entity
 
 Implement `pacman.py`: position, queued direction, movement per tick, wall collision via Maze,
 chomping animation state.
 
 Checkpoint (completed)
-- Done: [pacman.py](../src/ai_pacman/pacman.py) implemented + tests
+- Done: [pacman.py](../../implementation/pacman_dryrun/src/ai_pacman/pacman.py) implemented + tests
 - Constraints / ground rules (active for all remaining items):
   - Pac-Man movement is grid-step (tile-based) with an accumulator; dt spikes can create multi-tile steps.
 - Verification: `uv run --project . python -m pytest -q tests/test_pacman.py`
@@ -143,13 +143,13 @@ Checkpoint (completed)
 
 ---
 
-### ✅ Item 5 — Ghost entity + AI
+### ✅ Item 5 — pacman_dryrun: Ghost entity + AI
 
 Implement `ghost.py`: position, AI mode (normal / frightened / eaten), movement with random
 turns at intersections, frightened mode timer sourced from `config/game.yaml`.
 
 Checkpoint (completed)
-- Done: [ghost.py](../src/ai_pacman/ghost.py) implemented + tests
+- Done: [ghost.py](../../implementation/pacman_dryrun/src/ai_pacman/ghost.py) implemented + tests
 - Constraints / ground rules (active for all remaining items):
   - Frightened start reverses ghost direction; frightened movement is random-walk at intersections.
 - Verification: `uv run --project . python -m pytest -q tests/test_ghost.py`
@@ -157,13 +157,13 @@ Checkpoint (completed)
 
 ---
 
-### ✅ Item 6 — Renderer
+### ✅ Item 6 — pacman_dryrun: Renderer
 
 Implement `renderer.py`: all `pygame.draw` calls, reads colours exclusively from `config/visuals.yaml`.
 No entity class imports pygame directly.
 
 Checkpoint (completed)
-- Done: [renderer.py](../src/ai_pacman/renderer.py) implemented (all `pygame.draw` calls here)
+- Done: [renderer.py](../../implementation/pacman_dryrun/src/ai_pacman/renderer.py) implemented (all `pygame.draw` calls here)
 - Constraints / ground rules (active for all remaining items):
   - Renderer reads only values passed from config; entities remain pygame-free.
 - Verification: manual (run game; change `config/visuals.yaml` colours and observe)
@@ -171,32 +171,32 @@ Checkpoint (completed)
 
 ---
 
-### ✅ Item 7 — Game state + loop
+### ✅ Item 7 — pacman_dryrun: Game state + loop
 
 Implement `state.py` (GameState dataclass) and `game.py` (main loop: event handling, update,
 collision detection, render, FPS cap from config).
 
 Checkpoint (completed)
-- Done: [state.py](../src/ai_pacman/state.py) + [game.py](../src/ai_pacman/game.py) implemented
+- Done: [state.py](../../implementation/pacman_dryrun/src/ai_pacman/state.py) + [game.py](../../implementation/pacman_dryrun/src/ai_pacman/game.py) implemented
 - Verification: `uv run --project . python -c \"from ai_pacman.game import main; print('import ok')\"`
 - Gotchas: interactive run requires quitting the Pygame window (Esc) to return control
 
 ---
 
-### ✅ Item 8 — UI
+### ✅ Item 8 — pacman_dryrun: UI
 
 Implement `ui.py`: HUD (score + lives), Game Over overlay, Victory overlay.
 
 Checkpoint (completed)
-- Done: [ui.py](../src/ai_pacman/ui.py) implemented (HUD + overlays)
+- Done: [ui.py](../../implementation/pacman_dryrun/src/ai_pacman/ui.py) implemented (HUD + overlays)
 - Verification: manual (play to game-over/victory)
 - Gotchas: none
 
 ---
 
-### ✅ Item 9 — Integration pass
+### ✅ Item 9 — pacman_dryrun: Integration pass
 
-End-to-end playable run. Verify all acceptance criteria in `PRD.md` are met.
+End-to-end playable run. Verify all acceptance criteria in `implementation/pacman_dryrun/PRD.md` are met.
 Update PRD.md acceptance criteria checkboxes.
 
 Checkpoint (completed)
@@ -216,7 +216,7 @@ these items — treat them as provisional until Item 1 is complete._
 
 ---
 
-### ✅ Item 10 — Sound system foundation
+### ✅ Item 10 — pacman_dryrun: Sound system foundation
 
 Introduce the audio subsystem and sound event mapping. The YAML maps named sound events
 to specs, and all `pygame.mixer` calls are contained inside the audio module.
@@ -228,7 +228,7 @@ Checkpoint (completed)
 
 ---
 
-### ✅ Item 11 — Theme music
+### ✅ Item 11 — pacman_dryrun: Theme music
 
 Implement looping background music that plays during gameplay and stops on game over.
 Music is config-driven and started/stopped from game state transitions.
@@ -240,7 +240,7 @@ Checkpoint (completed)
 
 ---
 
-### ✅ Item 12 — Sound effects
+### ✅ Item 12 — pacman_dryrun: Sound effects
 
 Implement event-triggered sound effects for pellets, power pellets, ghost eat, death, game over, and level clear.
 All mapped in `config/sounds.yaml`.
@@ -252,7 +252,7 @@ Checkpoint (completed)
 
 ---
 
-### ✅ Item 13 — Start screen
+### ✅ Item 13 — pacman_dryrun: Start screen
 
 Implement a start screen shown before the first game. It includes game title, controls, and difficulty selection.
 
@@ -263,7 +263,7 @@ Checkpoint (completed)
 
 ---
 
-### ✅ Item 14 — Multiple difficulty levels
+### ✅ Item 14 — pacman_dryrun: Multiple difficulty levels
 
 Add `config/difficulty.yaml` mapping named levels (`easy`, `normal`, `hard`) to numeric parameters.
 Player selects difficulty on the start screen; active difficulty affects speed and frightened duration.
@@ -275,7 +275,7 @@ Checkpoint (completed)
 
 ---
 
-### ⏳ Item 15 — High score persistence
+### ⏳ Item 15 — pacman_dryrun: High score persistence
 
 Persist the top N scores (name, score, difficulty, date) to a local JSON file. Path
 is config-driven (`config/game.yaml: high_score_file`). Load on start, save on game
@@ -288,7 +288,7 @@ whether initials entry (3-char) or full name is more appropriate for this contex
 
 ---
 
-### ✅ Item 16 — Level progression
+### ✅ Item 16 — pacman_dryrun: Level progression
 
 After all pellets are eaten, advance to the next level.
 Level number increments; maze resets with pellets; ghost speed scales per level (with difficulty profile multipliers).
@@ -300,7 +300,7 @@ Checkpoint (completed)
 
 ---
 
-### ⏳ Item 17 — Save and resume game progression
+### ⏳ Item 17 — pacman_dryrun: Save and resume game progression
 
 Persist the full game state to disk so a player can quit mid-game and continue from the
 same position. Saved state includes: current level, score, lives remaining, pellet map

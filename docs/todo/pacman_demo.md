@@ -1,15 +1,15 @@
 > **Anchor document** — pacman_demo: PRD drafted (v0.1), not yet strengthened. Extension backlog seeded (Items 10–16).
 > Next: **Item 1** — research + pre-implementation gate. Parts A and B both required before any code.
-> Read `PRD.md` before starting Item 1.
+> Read `implementation/pacman_demo/PRD.md` before starting Item 1.
 
 ## Resume (start here)
 
-- From `implementation/pacman_demo/docs/TODO.md`: Continue **Item 1** — Part A (research, refine extension items) then Part B (resolve all [TBD] items in PRD.md)
+- From `docs/todo/pacman_demo.md`: Continue **Item 1** — Part A (research, refine extension items) then Part B (resolve all [TBD] items in PRD.md)
 
 ## Session start prompt
 
 ```
-load the use-context skill, and from: implementation/pacman_demo/docs/TODO.md, continue
+load the use-context skill, and from: docs/todo/pacman_demo.md, continue
 ```
 
 ## Workshop prompt (bounded research → PRD → start build)
@@ -19,11 +19,11 @@ Use this when a breakout team wants the agent to do the research and PRD strengt
 ```
 Load the use-context skill.
 
-From implementation/pacman_demo/docs/TODO.md, complete Item 1 with these constraints:
+From docs/todo/pacman_demo.md, complete Item 1 with these constraints:
 - Timebox web research to 10 minutes and at most 5 sources.
 - Every behaviour-changing claim must include a source URL; otherwise mark it as a design choice.
-- Convert research into explicit decisions in PRD.md (no open questions remain).
-- Create docs/RESEARCH.md with a short evidence summary (claims → decisions + URLs).
+- Convert research into explicit decisions in implementation/pacman_demo/PRD.md (no open questions remain).
+- Create implementation/pacman_demo/docs/RESEARCH.md with a short evidence summary (claims → decisions + URLs).
 
 Then stop after updating the anchor doc to mark Item 1 ✅ and set Item 2 as next.
 ```
@@ -38,14 +38,14 @@ _None yet — grows as items complete. Every completed item must forward its inv
 
 ## Items
 
-### ✅ Item 0 — Create draft PRD from brief
+### ✅ Item 0 — pacman_demo: Create draft PRD from brief
 
 **Brief:** slide 26 Pac-Man workshop prompt.
 
 **Done:**
-- `PRD.md` created — requirements translated from prompt, single-file approach explicitly rejected,
+- `implementation/pacman_demo/PRD.md` created — requirements translated from prompt, single-file approach explicitly rejected,
   architecture constraints applied, [TBD] items named, proposed module structure documented.
-- `docs/TODO.md` (this file) created as the backlog anchor doc.
+- `docs/todo/pacman_demo.md` (this file) created as the backlog anchor doc.
 - `README.md` created.
 
 **Constraints established:**
@@ -54,11 +54,11 @@ _None yet — grows as items complete. Every completed item must forward its inv
 
 ---
 
-### ⏳ Item 1 — Pre-implementation gate: research, extend backlog, strengthen PRD
+### ⏳ Item 1 — pacman_demo: Pre-implementation gate: research, extend backlog, strengthen PRD
 
 Two parts: (A) internet research to discover what a well-featured Pac-Man clone looks like
 beyond the brief, then use findings to populate the extension backlog items (Items 10–16);
-(B) resolve all [TBD] items in `PRD.md` so implementation can begin.
+(B) resolve all [TBD] items in `implementation/pacman_demo/PRD.md` so implementation can begin.
 
 Neither part is optional — extension items must be framed before core implementation
 starts so the architecture accommodates them (e.g. the sound system shapes how `game.py`
@@ -75,7 +75,7 @@ is wired; difficulty shapes what goes in config).
    - Confirm or adjust scope, behaviour, and config keys for each item
    - Add any extension items the research surfaces that are not already listed
    - Remove any seeded item that research shows is out of scope or unworkable
-3. Add `config/sounds.yaml` to the proposed module structure in `PRD.md` (maps sound event
+3. Add `config/sounds.yaml` to the proposed module structure in `implementation/pacman_demo/PRD.md` (maps sound event
    names to file paths — all sound wiring is config, no hardcoded paths in source)
 4. Add `config/difficulty.yaml` to the proposed module structure (maps difficulty level names
    to numeric parameters — speed multipliers, frightened duration, ghost count, etc.)
@@ -97,11 +97,11 @@ is wired; difficulty shapes what goes in config).
 **Verification:**
 - `PRD.md` has no remaining `[TBD]` markers and status is 🟢 Ready
 - Items 10–16 each have a confirmed scope and at least one verification command
-- Research evidence summary is recorded in `docs/RESEARCH.md`
+- Research evidence summary is recorded in `implementation/pacman_demo/docs/RESEARCH.md`
 
 ---
 
-### ⏳ Item 2 — Scaffold: structure, pyproject.toml, config stubs
+### ⏳ Item 2 — pacman_demo: Scaffold: structure, pyproject.toml, config stubs
 
 Create the directory skeleton and empty config files. No source logic yet.
 
@@ -117,7 +117,7 @@ Create the directory skeleton and empty config files. No source logic yet.
 
 ---
 
-### ⏳ Item 3 — Maze module
+### ⏳ Item 3 — pacman_demo: Maze module
 
 Implement `maze.py`: load grid from `config/maze.yaml`, expose wall collision queries, pellet map.
 
@@ -125,7 +125,7 @@ Implement `maze.py`: load grid from `config/maze.yaml`, expose wall collision qu
 
 ---
 
-### ⏳ Item 4 — Pac-Man entity
+### ⏳ Item 4 — pacman_demo: Pac-Man entity
 
 Implement `pacman.py`: position, queued direction, movement per tick, wall collision via Maze,
 chomping animation state.
@@ -134,7 +134,7 @@ chomping animation state.
 
 ---
 
-### ⏳ Item 5 — Ghost entity + AI
+### ⏳ Item 5 — pacman_demo: Ghost entity + AI
 
 Implement `ghost.py`: position, AI mode (normal / frightened / eaten), movement with random
 turns at intersections, frightened mode timer sourced from `config/game.yaml`.
@@ -143,7 +143,7 @@ turns at intersections, frightened mode timer sourced from `config/game.yaml`.
 
 ---
 
-### ⏳ Item 6 — Renderer
+### ⏳ Item 6 — pacman_demo: Renderer
 
 Implement `renderer.py`: all `pygame.draw` calls, reads colours exclusively from `config/visuals.yaml`.
 No entity class imports pygame directly.
@@ -152,7 +152,7 @@ No entity class imports pygame directly.
 
 ---
 
-### ⏳ Item 7 — Game state + loop
+### ⏳ Item 7 — pacman_demo: Game state + loop
 
 Implement `state.py` (GameState dataclass) and `game.py` (main loop: event handling, update,
 collision detection, render, FPS cap from config).
@@ -161,7 +161,7 @@ collision detection, render, FPS cap from config).
 
 ---
 
-### ⏳ Item 8 — UI
+### ⏳ Item 8 — pacman_demo: UI
 
 Implement `ui.py`: HUD (score + lives), Game Over overlay, Victory overlay.
 
@@ -169,9 +169,9 @@ Implement `ui.py`: HUD (score + lives), Game Over overlay, Victory overlay.
 
 ---
 
-### ⏳ Item 9 — Integration pass
+### ⏳ Item 9 — pacman_demo: Integration pass
 
-End-to-end playable run. Verify all acceptance criteria in `PRD.md` are met.
+End-to-end playable run. Verify all acceptance criteria in `implementation/pacman_demo/PRD.md` are met.
 Update PRD.md acceptance criteria checkboxes.
 
 **Verification:** all acceptance criteria checked; no source file over ~300 lines; no hardcoded colours or timing values in source.
@@ -186,7 +186,7 @@ these items — treat them as provisional until Item 1 is complete._
 
 ---
 
-### ⏳ Item 10 — Sound system foundation
+### ⏳ Item 10 — pacman_demo: Sound system foundation
 
 Introduce `audio.py` and `config/sounds.yaml`. The YAML maps named sound events
 (`pellet_eat`, `power_pellet`, `ghost_eat`, `pacman_death`, `game_over`, `victory`,
@@ -200,7 +200,7 @@ control approach, looping vs one-shot distinction in config.
 
 ---
 
-### ⏳ Item 11 — Theme music
+### ⏳ Item 11 — pacman_demo: Theme music
 
 Implement looping background music that plays during gameplay and stops on Game Over
 or Victory. Music track is config-driven (`sounds.yaml: theme_music`). Start/stop
@@ -208,26 +208,26 @@ wired through `audio.py`, called from game loop state transitions.
 
 Research should confirm: classic Pac-Man intro jingle is well-documented and freely
 available in compatible formats; identify a suitable source or generate a MIDI-to-WAV
-equivalent. Document source URL in `docs/RESEARCH.md`.
+equivalent. Document source URL in `implementation/pacman_demo/docs/RESEARCH.md`.
 
 **Verification:** theme plays on game start, stops on game over/victory, resuming a new game restarts it.
 
 ---
 
-### ⏳ Item 12 — Sound effects
+### ⏳ Item 12 — pacman_demo: Sound effects
 
 Implement event-triggered sound effects for: pellet eat (short blip), power pellet
 (distinct blip), ghost eat (ascending tone), Pac-Man death (descending sequence),
 game over, victory fanfare. All mapped in `config/sounds.yaml`.
 
 Research should confirm: original arcade sound timings and whether open-licensed
-recreations exist; document sources in `docs/RESEARCH.md`.
+recreations exist; document sources in `implementation/pacman_demo/docs/RESEARCH.md`.
 
 **Verification:** each game event triggers its configured sound; swapping a file in `sounds.yaml` changes the sound.
 
 ---
 
-### ⏳ Item 13 — Start screen
+### ⏳ Item 13 — pacman_demo: Start screen
 
 Implement a start screen shown before the first game and after Game Over / Victory.
 Displays: game title, high score, controls (arrow keys = move), prompt to start.
@@ -241,7 +241,7 @@ difficulty selection appears on the start screen or a separate screen.
 
 ---
 
-### ⏳ Item 14 — Multiple difficulty levels
+### ⏳ Item 14 — pacman_demo: Multiple difficulty levels
 
 Add `config/difficulty.yaml` mapping named levels (`easy`, `normal`, `hard`) to
 parameters: ghost speed multiplier, frightened duration (seconds), ghost count active,
@@ -256,7 +256,7 @@ what makes ghost AI harder (speed vs count vs smarter pathfinding).
 
 ---
 
-### ⏳ Item 15 — High score persistence
+### ⏳ Item 15 — pacman_demo: High score persistence
 
 Persist the top N scores (name, score, difficulty, date) to a local JSON file. Path
 is config-driven (`config/game.yaml: high_score_file`). Load on start, save on game
@@ -269,7 +269,7 @@ whether initials entry (3-char) or full name is more appropriate for this contex
 
 ---
 
-### ⏳ Item 16 — Level progression
+### ⏳ Item 16 — pacman_demo: Level progression
 
 After all pellets are eaten, advance to the next level rather than showing Victory.
 Level number increments; maze resets with pellets; ghost speed and count scale per
@@ -283,7 +283,7 @@ frightened duration decreases); appropriate final level for a demo clone.
 
 ---
 
-### ⏳ Item 17 — Save and resume game progression
+### ⏳ Item 17 — pacman_demo: Save and resume game progression
 
 Persist the full game state to disk so a player can quit mid-game and continue from the
 same position. Saved state includes: current level, score, lives remaining, pellet map

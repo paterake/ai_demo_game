@@ -32,4 +32,4 @@ cd implementation/pacman_dryrun
 uv run --project . python -m pytest -q
 ```
 
-**Start here:** [PRD.md](PRD.md), then [docs/RESEARCH.md](docs/RESEARCH.md), then [docs/TODO.md](docs/TODO.md).
+**Start here:** [PRD.md](PRD.md), then [docs/RESEARCH.md](docs/RESEARCH.md), then [docs/todo/pacman_dryrun.md](../../docs/todo/pacman_dryrun.md).

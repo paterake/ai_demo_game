@@ -12,4 +12,4 @@ This folder is intentionally **docs-first**. In the workshop, breakout teams wil
 - Config purity: colours, timing, and game rules live in YAML, not source code
 - Modular structure: one class per file, renderer decoupled from game logic
 
-**Start here:** [PRD.md](PRD.md) then [docs/TODO.md](docs/TODO.md).
+**Start here:** [PRD.md](PRD.md) then [docs/todo/pacman_demo.md](../../docs/todo/pacman_demo.md).

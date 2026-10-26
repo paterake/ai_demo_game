@@ -1,7 +1,7 @@
 # PRD: ai_game_pacman_demo
 
 **Version:** 0.1 — draft  
-**Status:** 🟡 Draft — [TBD] items must be resolved before implementation begins (see Item 1 in docs/TODO.md)
+**Status:** 🟡 Draft — [TBD] items must be resolved before implementation begins (see Item 1 in [docs/todo/pacman_demo.md](../../docs/todo/pacman_demo.md))
 
 ---
 
